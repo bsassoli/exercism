@@ -1,0 +1,33 @@
+#include "binary.h"
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+#define MAX 500
+void revstr(char *str);
+int convert(const char *input);
+
+int convert(const char *input)
+{
+    int ans = 0;
+    int numDigits = strlen(input) - 1;
+    for (int p = numDigits; p >= 0; p--)
+    {
+        int curr = input[numDigits - p] - '0';
+        ans += curr * pow(2, p);
+    }
+    return ans;
+}
+
+void revstr(char *str)
+{
+    int end = strlen(str) - 1;
+    for (int i = 0; i <= end; i++)
+    {
+        char temp = str[i];
+        str[i] = str[end - i];
+        str[end - i] = temp;
+    }
+}
+
